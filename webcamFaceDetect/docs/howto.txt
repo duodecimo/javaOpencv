@@ -1,0 +1,19 @@
+by Duodecimo, July/2015.
+
+There are some concerns in order to this project run:
+
+1)  The native library: it is stored in folder natives under this project main folder,
+    the file name is libopencv_java300.so.
+    It may not run but in linux, as: the native library was compiled under linux.
+    The solution would be to replace it by a java native file from a opencv 3.0 compiled
+    under windows.
+
+2)  In order to detect faces, opencv uses cascade files.
+    There are several of them under the folder src/res/classifiers.
+    The choosen one must be refered on Processor.java, as:
+        String CASCADEFILE = getClass().
+                getResource("/res/classifiers/haarcascade_frontalface_alt.xml").getPath();
+    In windows this addressing usually does not works, so it must be changed to a windows
+    string file path.
+
+3)  This project demands a functional webcam attached to work properly.
